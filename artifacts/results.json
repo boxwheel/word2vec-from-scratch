@@ -1,0 +1,40 @@
+{
+  "hyperparameters": {
+    "dim": 100,
+    "window": 5,
+    "negative_samples": 5,
+    "epochs": 5,
+    "subsample_threshold": 1e-05,
+    "learning_rate": 0.025,
+    "min_count": 5,
+    "seed": 42,
+    "neg_table_size": 100000000,
+    "training_time_seconds": 258.8
+  },
+  "data": {
+    "corpus": "data/text8",
+    "total_tokens": 16718844,
+    "vocab_size": 71290,
+    "training_tokens": 16718844
+  },
+  "accuracy": {
+    "total": {
+      "correct": 4046,
+      "asked": 17827,
+      "skipped": 1717,
+      "accuracy": 22.6959
+    },
+    "semantic": {
+      "correct": 1467,
+      "asked": 7416,
+      "skipped": 1453,
+      "accuracy": 19.7816
+    },
+    "syntactic": {
+      "correct": 2579,
+      "asked": 10411,
+      "skipped": 264,
+      "accuracy": 24.7719
+    }
+  }
+}

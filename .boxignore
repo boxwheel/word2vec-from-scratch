@@ -1,0 +1,14 @@
+# Auto-generated from .gitignore by Ascii. Edit freely: hand edits are never overwritten.
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+.env
+.provisioned
+.mcp.json
+CLAUDE.md
+RESEARCH_PRIMER.md
+bin/publish-repo
+*.zip
+data/text8
+*.so
