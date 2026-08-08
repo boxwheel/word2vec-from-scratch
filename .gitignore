@@ -9,3 +9,5 @@ CLAUDE.md
 RESEARCH_PRIMER.md
 bin/publish-repo
 *.zip
+data/text8
+*.so
