@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+.env
+.provisioned
+.mcp.json
+CLAUDE.md
+RESEARCH_PRIMER.md
+bin/publish-repo
+*.zip
