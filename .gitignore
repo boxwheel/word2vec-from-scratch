@@ -12,3 +12,4 @@ bin/publish-repo
 data/text8
 *.so
 artifacts/vectors*.txt
+artifacts/vectors.txt.*
