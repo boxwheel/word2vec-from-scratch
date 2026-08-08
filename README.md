@@ -24,6 +24,32 @@ python train.py
 - `artifacts/vectors.txt` — final word vectors
 - `artifacts/results.json` — accuracy metrics and hyperparameters
 
-## Results
+## Results (final: dim=200, window=8, neg=5, epochs=10)
 
-See `artifacts/results.json` for the latest measured numbers.
+| Category | Accuracy |
+|----------|----------|
+| **Total** | **31.43%** |
+| Semantic | 33.28% |
+| Syntactic | 30.11% |
+
+- capital-common-countries: 69.17%
+- gram6-nationality-adjective: 76.00%
+- gram3-comparative: 47.00%
+- capital-world: 36.62%
+
+1717 questions skipped (OOV words). Training time: 17.6 min on 4 CPUs.
+
+### Experiment log
+
+| Run | dim | win | neg | eps | Total | Semantic | Syntactic | Time |
+|-----|-----|-----|-----|-----|-------|----------|-----------|------|
+| 1 | 100 | 5 | 5 | 5 | 22.70% | 19.78% | 24.77% | 4.3m |
+| 2 | 200 | 5 | 5 | 5 | 23.17% | 19.81% | 25.56% | 6.2m |
+| 3 | 200 | 5 | 5 | 10 | 30.06% | 30.19% | 29.97% | 12.0m |
+| 4 | 200 | 8 | 5 | 10 | **31.43%** | **33.28%** | **30.11%** | 17.6m |
+
+Key findings:
+- More epochs (5→10) gave the biggest jump: +7pp accuracy
+- Larger window (5→8) added another +1.4pp
+- Wider vectors (100→200) alone helped only modestly (+0.5pp)
+- The 30% gap vs the paper (~40-50%) is primarily due to corpus size (17M vs 100B words)
