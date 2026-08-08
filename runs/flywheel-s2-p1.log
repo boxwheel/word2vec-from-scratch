@@ -1,0 +1,44 @@
+The mission is complete. Here's a summary of what was done:
+
+---
+
+## word2vec from scratch — Final Report
+
+### Result: **31.43% total accuracy** on the Google word analogy task
+
+| Category | Accuracy |
+|----------|----------|
+| **Total** | **31.43%** |
+| Semantic | 33.28% |
+| Syntactic | 30.11% |
+| Skipped | 1,717 (OOV) |
+
+**Hyperparameters**: dim=200, window=8, neg=5, epochs=10, lr=0.025, subsample=1e-5, seed=42  
+**Training time**: 17.6 minutes on 4 CPUs  
+**Vocabulary**: 71,290 words from text8 (min-count=5)
+
+### Deliverables
+- `~/research/artifacts/vectors.txt` — 71,290 × 200-dim vectors in word2vec format (136 MB)
+- `~/research/artifacts/results.json` — accuracy metrics + hyperparameters
+- **GitHub**: https://github.com/boxwheel/word2vec-from-scratch
+- **Flywheel DAG**: 6 nodes (root plan + 4 experiment runs + synthesis), all public, with artifacts
+
+### Experiment log
+
+| # | dim | win | eps | Total | Semantic | Syntactic | Time |
+|---|-----|-----|-----|-------|----------|-----------|------|
+| 1 | 100 | 5 | 5 | 22.70% | 19.78% | 24.77% | 4.3m |
+| 2 | 200 | 5 | 5 | 23.17% | 19.81% | 25.56% | 6.2m |
+| 3 | 200 | 5 | 10 | 30.06% | 30.19% | 29.97% | 12.0m |
+| 4 | 200 | 8 | 10 | **31.43%** | **33.28%** | **30.11%** | 17.6m |
+
+### Key findings
+1. **More epochs** had the biggest impact — +7pp going from 5→10
+2. **Wider context** window (5→8) added +1.4pp, mainly in semantics
+3. **Larger dimension** alone (100→200) helped only +0.5pp
+4. The ~15pp gap vs the original paper is primarily due to corpus size (17M vs 100B words)
+
+### Implementation
+- **C training loop** (`word2vec_core.c`) — skip-gram with negative sampling, ~320K tokens/sec at dim=200
+- **Python driver** (`train.py`) — vocabulary, subsampling table, negative table, evaluation, output
+- No external word2vec libraries used (only NumPy for pre/post-processing)
